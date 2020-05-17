@@ -1,0 +1,86 @@
+.App {
+  position: relative;
+}
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.Modal {
+  position: absolute;
+  z-index: 999;
+  background: white;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 744px;
+  padding: 50px;
+  opacity: 0;
+  visibility: hidden;
+   transition: 0.5s;
+}
+
+.active {
+  opacity: 1;
+  visibility: visible;
+  transition: 1s;
+}
+
+.container {
+  position: relative;
+}
+
+.exit {
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+}
+
+.button {
+  display: flex;
+  justify-content: flex-end;
+  margin: 20px;
+}
+
+.button button {
+  margin: 10px;
+  width: 15%;
+  height: 35px;
+  color: #ffff;
+  border: none;
+  cursor: pointer;
+}
+
+.button .accept {
+  background-color: #28A745;
+}
+
+.button .decline {
+  background-color: #D63447;
+}
