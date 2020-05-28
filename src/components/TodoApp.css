@@ -1,0 +1,107 @@
+* {
+  margin: 0;
+  padding: 0;
+  color: white;
+  font-family: "Balsamiq Sans", cursive;
+}
+
+h4 {
+  text-transform: uppercase;
+}
+
+button {
+  cursor: pointer;
+}
+
+.TodoApp {
+  background-color: #65b8c3;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.header img {
+  margin: 15px;
+  cursor: pointer;
+}
+
+.header h1 {
+  flex-grow: 1;
+}
+
+.upcoming,
+.finished {
+  margin: 5px 15px;
+}
+
+.upcoming h4,
+.finished h4 {
+  margin-left: 10px;
+  margin-bottom: 5px;
+}
+
+.items-up,
+.items-finished {
+  display: flex;
+  padding: 15px 20px;
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  border-radius: 8px;
+  background-color: #fff;
+  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3),
+    0 0 40px rgba(0, 0, 0, 0.1) inset;
+  -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3),
+    0 0 40px rgba(0, 0, 0, 0.1) inset;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+}
+
+
+.items-finished {
+  background-color: #8fd3dd;
+      text-decoration: line-through;
+}
+
+.items-up div,
+.items-up b
+{
+  color: black;
+}
+
+.items-finished  div,
+.items-finished  b  {
+  color: white;
+}
+
+.finished {
+  margin-top: 35px;
+  margin-bottom: 40px;
+}
+
+.add {
+  text-align: center;
+}
+
+.add button {
+  height: 50px;
+  width: 50px;
+  border-radius: 50px;
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  position: relative;
+  background-color: #f4f3f3;
+}
+
+.add button img {
+  position: absolute;
+  width: 13px;
+  height: 13px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+button {
+  outline: none;
+  margin-bottom: 35px;
+}
