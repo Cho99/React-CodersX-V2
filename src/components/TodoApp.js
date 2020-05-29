@@ -8,14 +8,14 @@ export default class TodoApp extends Component {
     super();
     this.state = {
       activeModal: false,
-      todoItems: [
-        { title: "Xem phim", isDone: true },
-        { title: "Choi game", isDone: false }
-      ]
+      newItem: "",
+      todoItems: []
     };
     this.showModal = this.showModal.bind(this);
     this.onExitModal = this.onExitModal.bind(this);
     this.addItems = this.addItems.bind(this);
+    this.onChange = this.onChange.bind(this);
+    this.onFinished = this.onFinished.bind(this);
   }
 
   showModal() {
@@ -24,6 +24,12 @@ export default class TodoApp extends Component {
 
   onExitModal() {
     this.setState({ activeModal: false });
+  }
+
+  onChange(event) {
+    this.setState({
+      newItem: event.target.value
+    });
   }
 
   addItems() {
@@ -35,12 +41,67 @@ export default class TodoApp extends Component {
     }
 
     this.setState({
+      newItem: "",
       todoItems: [{ title: value, isDone: false }, ...this.state.todoItems]
     });
+    this.onExitModal();
+  }
+
+  onFinished(item) {
+    return (event) => {
+      const isDone = item.isDone;
+      var { todoItems } = this.state;
+      const index = todoItems.indexOf(item);
+      this.setState({
+        todoItems: [...todoItems.slice(0, index), {...item, isDone: !isDone}, ...todoItems.slice(index + 1)]
+      });
+    };
   }
 
   render() {
-    const { todoItems, activeModal } = this.state;
+    const { newItem, todoItems, activeModal } = this.state;
+    var content;
+    var content1;
+    var content2;
+    if (todoItems != 0) {
+      content1 = (
+        <div className="upcoming">
+          <h4>Upcoming</h4>
+          {todoItems &&
+            todoItems
+              .filter(item => item.isDone == false)
+              .map((item, index) => (
+                <Upcoming
+                  key={index}
+                  number={index}
+                  item={item}
+                  onFinished={this.onFinished(item)}
+                />
+              ))}
+        </div>
+      );
+      content2 = (
+        <div className="finished">
+          <h4>Finished</h4>
+          {todoItems &&
+            todoItems
+              .filter(item => item.isDone == true)
+              .map((item, index) => (
+                <Finished key={index} number={index} item={item} />
+              ))}
+        </div>
+      );
+    } else {
+      content = (
+        <div className="nothing">
+          <img
+            src="https://cdn.glitch.com/4e19a974-9557-478d-bd6b-f06176819f49%2Fundraw_Taken_if77.svg?v=1590717177020"
+            width={250}
+            height={250}
+          ></img>
+        </div>
+      );
+    }
     return (
       <div className="TodoApp">
         <div className="header">
@@ -51,20 +112,10 @@ export default class TodoApp extends Component {
           ></img>
           <h1>Daily List</h1>
         </div>
-        <div className="upcoming">
-          <h4>Upcoming</h4>
-          {todoItems &&
-            todoItems.filter( item => item.isDone == false).map((item, index) => (
-              <Upcoming key={index} number={index} item={item} />
-            ))}
-        </div>
-        <div className="finished">
-          <h4>Finished</h4>
-           {todoItems &&
-            todoItems.filter( item => item.isDone == true).map((item, index) => (
-              <Finished key={index} number={index} item={item} />
-            ))}
-        </div>
+        {content}
+
+        {content1}
+        {content2}
         <div className="add">
           <button onClick={this.showModal}>
             <img src="https://cdn.glitch.com/4e19a974-9557-478d-bd6b-f06176819f49%2Fshapes-and-symbols.png?v=1589813559895"></img>
@@ -74,6 +125,8 @@ export default class TodoApp extends Component {
           active={activeModal}
           exit={this.onExitModal}
           addItems={this.addItems}
+          newItem={newItem}
+          onChange={this.onChange}
         />
       </div>
     );

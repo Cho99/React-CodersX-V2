@@ -1,5 +1,7 @@
 .App {
   position: relative;
+  display: flex;
+    justify-content: center;
 }
 
 .App-logo {

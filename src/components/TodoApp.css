@@ -13,8 +13,19 @@ button {
   cursor: pointer;
 }
 
+.nothing {
+  text-align: center;
+}
+
 .TodoApp {
+  margin-top: 50px;
   background-color: #65b8c3;
+  width: 350px;
+  height: 620px;
+  max-width: 350px;
+  max-height: 620px;
+  box-sizing: border-box;
+  padding: 5px;
 }
 
 .header {
@@ -57,20 +68,18 @@ button {
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
 }
 
-
 .items-finished {
   background-color: #8fd3dd;
-      text-decoration: line-through;
+  text-decoration: line-through;
 }
 
 .items-up div,
-.items-up b
-{
+.items-up b {
   color: black;
 }
 
-.items-finished  div,
-.items-finished  b  {
+.items-finished div,
+.items-finished b {
   color: white;
 }
 
